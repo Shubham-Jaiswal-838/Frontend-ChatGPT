@@ -2,9 +2,13 @@ import { Button } from '@chakra-ui/react'
 import React from 'react'
 import Logo from "../assests/OpenaiLogo.png"
 import {Link} from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   return (
+    <>
+    <ToastContainer/>
     <div className='home'>
         <div className="auth-btns">
             <img  src={Logo} alt="Open AI logo" className='openai-logo'/>
@@ -19,6 +23,8 @@ const Home = () => {
         </div>
 
     </div>
+    </>
+
   )
 }
 
