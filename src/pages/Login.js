@@ -27,7 +27,7 @@ const Login = () => {
          if(validEmail(loginDetails.email)){
             // alert(loginDetails.email+" "+ loginDetails.password);
              
-            axios.post("https://project-chatgpt-backend.onrender.com/login", {loginDetails})
+            axios.post("https://backend-chat-gpt-git-main-shubham-jaiswal-838.vercel.app/login", {loginDetails})
             .then((data) => {
               //  console.log(data.data.token);
 

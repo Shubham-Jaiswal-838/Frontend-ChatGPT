@@ -36,7 +36,7 @@ const ChatPage = () => {
     const userId = localStorage.getItem("id");
     if(userId){
       axios
-      .post("https://project-chatgpt-backend.onrender.com", { userId })
+      .post("https://backend-chat-gpt-git-main-shubham-jaiswal-838.vercel.app/", { userId })
       .then((res) => {
         setResponse(res.data.user.userHistory);
         setHanldeScrollDown(!hanldeScrollDown);
@@ -67,7 +67,7 @@ const ChatPage = () => {
       setLoading(true);
 
       axios
-        .post("https://project-chatgpt-backend.onrender.com/chat", { promptWithId })
+        .post("https://backend-chat-gpt-git-main-shubham-jaiswal-838.vercel.app/chat", { promptWithId })
         .then((res) => {
           setResponse(res.data.userHistory);
           setQuestion("");
@@ -111,7 +111,7 @@ const ChatPage = () => {
     const token = Cookies.get("token"); // Get the JWT token from the 'token' cookie
 
     axios
-      .delete(`https://project-chatgpt-backend.onrender.com/delete/${userId}/${id}`, {
+      .delete(`https://backend-chat-gpt-git-main-shubham-jaiswal-838.vercel.app/delete/${userId}/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Set the Authorization header with the JWT token
         },

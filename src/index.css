@@ -18,10 +18,16 @@ body.dark-mode {
   --popover-color: #fff;
 
 }
-html {
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
   scroll-behavior: smooth;
 }
-
 .user{
   color: var(--text-color);
   display: flex;
@@ -126,8 +132,8 @@ html {
 svg.bottom-go-btn {
   bottom: 90%;
   position: fixed;
-  bottom: 20%;
-  right: 20px;
+  bottom: 100px;
+  right: 3%;
   font-size: 1.5rem;
   color: inherit;
   color: rgb(83, 86, 98);
@@ -178,12 +184,18 @@ span.loading {
 }
 
 .home, .not-found {
+  height: 100%;
   background-color: rgb(52, 53, 65);
   color: #fff;
 }
 .login{
+  height: 100%;
   background-color: white;
   color: #000;
+}
+
+.signup{
+  height: 100%;
 }
 .auth-btns, .not-found{
   display: flex;
@@ -267,6 +279,7 @@ span.loading {
     grid-template-columns: 1fr !important;
     grid-template-rows: 1fr;
   }  
+ 
   .history-container{
     transition: all 200ms ease;
       position: fixed;
@@ -301,7 +314,10 @@ span.loading {
     /* opacity: 9090909; */
     background-color: var(--bg-color);
     color: var(--text-color);
-  border-bottom: 1px solid var(--chatgpt-border);
+  border-bottom: 1.5px solid var(--chatgpt-border);
+  }
+  .add-icon, .open-menu{
+      font-size: 1.5rem;
   }
   .open-menu{
     left: 0;
@@ -319,10 +335,6 @@ span.loading {
     z-index: 999999;
     color: var(--text-color);
     border: 1px solid var(--chatgpt-border);
-}
-svg.bottom-go-btn {
- 
-  right: 15px;
 }
 .Toastify__toast {
   z-index: 10000000 !important;

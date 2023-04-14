@@ -30,7 +30,7 @@ const Signup = () => {
  
       if (validEmail(signupDetails.email)) {
         axios
-          .post("https://project-chatgpt-backend.onrender.com/signup", { signupDetails })
+          .post("https://backend-chat-gpt-git-main-shubham-jaiswal-838.vercel.app/signup", { signupDetails })
           .then((data) => {
             // console.log(data.data);
              localStorage.setItem("id", data.data.user._id);
@@ -77,7 +77,10 @@ const Signup = () => {
         <Link to="/">
           <img src={Logo} alt="openai-logo" className="openai-logo" />
         </Link>
-        <Text fontSize="4xl">Create your account</Text>
+        {/* <Text fontSize="4xl">Create your account</Text> */}
+        <div className="text" style={{textAlign: "center"}}>
+  <Text fontSize="2xl">Create your account</Text>
+</div>
         <Input
           placeholder="Name"
           value={signupDetails.name}
