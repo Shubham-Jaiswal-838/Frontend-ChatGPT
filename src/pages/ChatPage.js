@@ -18,6 +18,9 @@ import Cookies from "js-cookie"; // Import the js-cookie library
 
 const ChatPage = () => {
   let ref = useRef("");
+  const scrollableDivRef = useRef(null);
+
+ 
   const navigate = useNavigate();
 
   const [question, setQuestion] = useState();
@@ -26,9 +29,16 @@ const ChatPage = () => {
   const [loading, setLoading] = useState(false);
   const [rerender, setRerender] = useState(false);
   const [open, setOpen] = useState(false);
+ 
+
+
+
+  const scrollToBottom = () => {
+    scrollableDivRef.current.scrollTop = scrollableDivRef.current.scrollHeight;
+  };
 
   useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight);
+      scrollToBottom();
   }, [hanldeScrollDown]);
 
   function chatQueryRequest() {
@@ -61,8 +71,8 @@ const ChatPage = () => {
       userId: localStorage.getItem("id"),
       id: v4(),
     };
-
-    if (promptWithId.prompt) {
+   
+    function getQueryAnswer(){
       setQuestion(promptWithId.prompt);
       setLoading(true);
 
@@ -80,7 +90,14 @@ const ChatPage = () => {
         });
       ref.current.value = "";
     }
+     
+    if ((promptWithId.prompt && e.type === "submit") || (promptWithId.prompt)) {
+      getQueryAnswer();
+    }
+
   };
+
+
 
   const handleNavigate = () => {
     localStorage.removeItem("id");
@@ -139,8 +156,8 @@ const ChatPage = () => {
         <RxHamburgerMenu className="open-menu hamburger-menu" onClick={handleMenuOpen} />
         <BiPlus className="add-icon new-chat-page"/>
       </div>
-      <div className="chatgpt-container">
-        <div className={`history-container ${open ? "open-menu" : ""}`}>
+      <div className="chatgpt-container" >
+        <div className={`history-container ${open ? "open-menu" : ""}`} >
           {open && <RxCross2 className="cross-btn" onClick={handleClose} style={{ width: "30px", height: "30px" }} />}
 
           <Button className="create-new-chat">
@@ -156,8 +173,8 @@ const ChatPage = () => {
           </div>
         </div>
 
-        <div className="question-answer-section">
-          <div className="chat-container">
+        <div className="question-answer-section" ref={scrollableDivRef}>
+          <div className="chat-container" >
             {response &&
               response.map((chat) => {
                 return (
@@ -198,7 +215,7 @@ const ChatPage = () => {
 
         <BsArrowDownCircleFill
           className="bottom-go-btn"
-          onClick={() => setHanldeScrollDown(!hanldeScrollDown)}
+          onClick={() => scrollToBottom()}
         />
       </div>
     </>
