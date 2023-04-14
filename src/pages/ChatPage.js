@@ -136,8 +136,8 @@ const ChatPage = () => {
     <>
       <ToastContainer />
       <div className="mobile-nav-menu">
-        <RxHamburgerMenu className="open-menu" onClick={handleMenuOpen} />
-        <BiPlus className="add-icon"/>
+        <RxHamburgerMenu className="open-menu hamburger-menu" onClick={handleMenuOpen} />
+        <BiPlus className="add-icon new-chat-page"/>
       </div>
       <div className="chatgpt-container">
         <div className={`history-container ${open ? "open-menu" : ""}`}>
